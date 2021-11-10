@@ -5,6 +5,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import './App.less'
 import { Ingredients } from './Ingredients/Ingredients';
+import "./DB/controller";
 
 function App() {
   return (
