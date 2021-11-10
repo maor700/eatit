@@ -12,16 +12,18 @@ function App() {
     <>
       <BrowserRouter>
         <div className="App">
-          <header className="App-header">
+          <div className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
             <div>What do you have?</div>
             <input></input>
-          </header>
-        </div>
+          </div>
         <Routes>
-          <Route path="/" element={<div>Home</div>} />
-          <Route path="about" element={<div>About</div>} />
+          <Route path="/" element={<h1>Home</h1>} />
+          <Route path="/ingredients" element={<h1>Ingredients editor</h1>} />
+          <Route path="/recipes" element={<h1>Recipes List</h1>} />
+          <Route path="/recipe-details" element={<h1>Recipe Details</h1>} />
         </Routes>
+        </div>
       </BrowserRouter>,
     </>
 
