@@ -18,6 +18,9 @@ export const WebcamCapture = () => {
         () => {
             const imageSrc = webcamRef.current?.getScreenshot?.();
             setImage(imageSrc);
+            setTimeout(()=>{
+                location.assign("/ingredients");
+            },4000);
         },
 
         [webcamRef]
