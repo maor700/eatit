@@ -3,7 +3,7 @@ import Webcam from "react-webcam";
 import Fab from '@mui/material/Fab';
 import CameraIcon from '@mui/icons-material/Camera';
 import ReplayIcon from '@mui/icons-material/Replay';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';    
 import { eatitDB } from '../../DB/DB';
 import './camera.css'
 
@@ -34,7 +34,7 @@ export const WebcamCapture = () => {
 
     return (
         <div className="webcam-container" style={{position:"unset"}}>
-            {image === '' ? <div className="cam-con">
+            {image === '' ? <div>
                 <Webcam
                     audio={false}
                     height="100%"

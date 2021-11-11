@@ -3,13 +3,13 @@
     color: aliceblue !important;
 }
 
-.cam-con{
+/* .cam-con{
     position: absolute;
     height: calc(100vh - 2em);
     left: 0;
     top:0;
     width: 100%;
-}
+} */
 
 .image-result{
     width: 100%;
