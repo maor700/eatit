@@ -1,4 +1,4 @@
-const SERVER_URL = `https://eatit-331711.el.r.appspot.com/`;
+const SERVER_URL = `https://eatit-331711.el.r.appspot.com`;
 
 export const getIngredientsFromImage = async (image: string) => {
 
