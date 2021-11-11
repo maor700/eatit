@@ -1,4 +1,4 @@
-const SERVER_URL = `https://eatit-331711.el.r.appspot.com`;
+const SERVER_URL = `http://localhost:8080`;
 
 export const getIngredientsFromImage = async (image: string) => {
 
