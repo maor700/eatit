@@ -6,4 +6,4 @@ export const getIngredientsFromImage = async (image: string) => {
     
     let url = `${SERVER_URL}/upload`;
     return axios.post(url, image);
-}s
+}
