@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Ingredients } from './components/Ingredients/Ingredients';
 import { WebcamCapture } from './components/camera';
-import RecipesList from './recipesList/recipesList';
+import {RecipesList} from './components/recipesList/recipesList';
 import logo from './assets/eatit.png';
 import "./DB/controller";
 import './App.less';

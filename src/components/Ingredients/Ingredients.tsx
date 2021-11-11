@@ -3,8 +3,11 @@ import { FC, useCallback, useState } from "react";
 import { addIngredientsToDb } from "../../DB/controller";
 import { eatitDB } from "../../DB/DB";
 import { InputField, Option } from "../FormElements/InputField";
-import { searchIngredients } from "../../services/recipes-api-service";
+import { searchIngredients, getRecipeFromIngredients } from "../../services/recipes-api-service";
 import "./Ingredients.less";
+import AddIcon from '@mui/icons-material/Add';
+import SearchIcon from '@mui/icons-material/Search';
+import Fab from '@mui/material/Fab';
 
 export const Ingredients: FC<any> = (props) => {
     const [addVal, setAddVal] = useState("");
@@ -27,16 +30,19 @@ export const Ingredients: FC<any> = (props) => {
         eatitDB.ingredients.delete(option.value);
     }
 
+    const searchHandler = () => {
+    }
+
     return (
         <div className="ing-con">
             <h2>Ingridents</h2>
             <InputField editModeOnly onRemove={removeHandler} onSelectOption={onSelection} previewMode isSearchInput getOptions={getOptions}>
-                <button onClick={() => { addIngredientsToDb([addVal]) }} className="btn">add</button>
+                <Fab onClick={() => { addIngredientsToDb([addVal]) }} className="btn"><AddIcon/></Fab>
             </InputField>
             {ingredients?.map(({ name, image }) => {
                 return <InputField onRemove={removeHandler} key={name} onSelectOption={onSelection} selected={{ value: name, image, label: name }} previewMode isSearchInput getOptions={getOptions} />
             })}
-            <button className="btn wide">Add recipe</button>
+            <Fab variant="extended" size="medium" className="btn wide">find recipe <SearchIcon/></Fab >
         </div>
     );
 }
