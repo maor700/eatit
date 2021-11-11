@@ -22,8 +22,7 @@ liveQuery(() => eatitDB.getAppPropVal("tags"))
 
 liveQuery(() => eatitDB.getAppPropVal("image"))
     .subscribe(async (image: string) => {
-        debugger;
-        getIngredientsFromImage(image).then(() => {
-            debugger;
+        getIngredientsFromImage(image).then(({ ingredients }: any) => {
+            eatitDB.setAppPropVal("tags", [ingredients ?? []])
         });
     });

@@ -16,23 +16,23 @@ export const WebcamCapture = () => {
 
     const capture = React.useCallback(
         () => {
-            const imageSrc = webcamRef.current?.getScreenshot?.();            
+            const imageSrc = webcamRef.current?.getScreenshot?.();
             setImage(imageSrc);
         },
 
         [webcamRef]
     );
 
-    const submitHandler = ()=>{
+    const submitHandler = () => {
         eatitDB.setAppPropVal("image", image);
     }
 
     const retake = () => {
-        setImage('');  
+        setImage('');
     }
 
     return (
-        <div className="webcam-container" style={{position:"unset"}}>
+        <div className="webcam-container" style={{ position: "unset" }}>
             {image === '' ? <div className="cam-con">
                 <Webcam
                     audio={false}
@@ -43,15 +43,15 @@ export const WebcamCapture = () => {
                     videoConstraints={videoConstraints}
                 />
                 <Fab className="cam-button"
-                    onClick={(e) => { e.preventDefault(); capture(); }}> <CameraIcon/>
-                    </Fab>
+                    onClick={(e) => { e.preventDefault(); capture(); }}> <CameraIcon />
+                </Fab>
             </div> : <>
-            <img className="image-result" src={image} />
-            <Fab className="cam-button"
+                <img className="image-result" src={image} />
+                <Fab className="cam-button"
                     onClick={retake}>
-                    <ReplayIcon/></Fab>
-            <Fab className="cam-button" onClick={submitHandler}>
-                    <NavigateNextIcon/></Fab>
+                    <ReplayIcon /></Fab>
+                <Fab className="cam-button" onClick={submitHandler}>
+                    <NavigateNextIcon /></Fab>
             </>}
         </div>
     );
