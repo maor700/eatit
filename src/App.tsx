@@ -3,8 +3,8 @@ import { Routes, Route, Link } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import { Ingredients } from './components/Ingredients/Ingredients';
 import "./DB/controller";
-import { WebcamCapture } from './components/camera';
-import RecipesList from './recipesList/recipesList';
+import { WebcamCapture } from './components/Camera/camera';
+import RecipesList from './components/recipesList/recipesList';
 import './App.less';
 
 function App() {
