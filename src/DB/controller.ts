@@ -1,5 +1,5 @@
 import { liveQuery } from "dexie";
-import { searchIngredients } from "../services/recipes-api-service";
+import { searchIngredients, getRecipeFromIngredients } from "../services/recipes-api-service";
 import { eatitDB } from "./DB";
 import { getIngredientsFromImage } from "../services/vision-api-service";
 
