@@ -26,11 +26,3 @@ liveQuery(() => eatitDB.getAppPropVal("image"))
             eatitDB.setAppPropVal("tags", [ingredients ?? []])
         });
     });
-
-    liveQuery(() => eatitDB.getAppPropVal("ingridiants"))
-    .subscribe(async (ingridiants: string) => {
-        getRecipeFromIngredients(ingridiants, "").then((recipes) => {
-            debugger;
-            eatitDB.recipes.bulkAdd(recipes);
-        });
-    });

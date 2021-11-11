@@ -42,7 +42,15 @@ export const Ingredients: FC<any> = (props) => {
             {ingredients?.map(({ name, image }) => {
                 return <InputField onRemove={removeHandler} key={name} onSelectOption={onSelection} selected={{ value: name, image, label: name }} previewMode isSearchInput getOptions={getOptions} />
             })}
-            <Fab variant="extended" size="medium" className="btn wide">find recipe <SearchIcon/></Fab >
+            <Fab onClick={async ()=>{
+                const recipes = await getRecipeFromIngredients(ingredients.map(_=>_.name),"");
+                eatitDB.transaction("rw", eatitDB.recipes, async ()=>{
+                    eatitDB.recipes.clear();
+                    eatitDB.recipes.bulkPut(recipes);
+                })
+        }} variant="extended" size="medium" className="btn wide">find recipe <SearchIcon/></Fab >
         </div>
     );
 }
+
+
