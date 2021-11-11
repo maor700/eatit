@@ -1,5 +1,5 @@
 import { liveQuery } from "dexie";
-import { searchIngredients } from "../services/recipes-api-service";
+import { searchIngredients, getRecipeFromIngredients } from "../services/recipes-api-service";
 import { eatitDB } from "./DB";
 import { getIngredientsFromImage } from "../services/vision-api-service";
 
@@ -16,13 +16,6 @@ const tagsToIngredients = async (tags: string[]) => {
 
 liveQuery(() => eatitDB.getAppPropVal("tags"))
     .subscribe(async (tags: any) => {
-        eatitDB.ingredients.clear();
+        await eatitDB.ingredients.clear();
         await addIngredientsToDb(tags);
-    });
-
-liveQuery(() => eatitDB.getAppPropVal("image"))
-    .subscribe(async (image: string) => {
-        getIngredientsFromImage(image).then(({ ingredients }: any) => {
-            eatitDB.setAppPropVal("tags", [ingredients ?? []])
-        });
     });

@@ -5,6 +5,7 @@ import CameraIcon from '@mui/icons-material/Camera';
 import ReplayIcon from '@mui/icons-material/Replay';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { eatitDB } from '../DB/DB';
+import { getIngredientsFromImage } from '../services/vision-api-service';
 
 export const WebcamCapture = () => {
     const webcamRef = React.useRef<any>(null);
@@ -23,8 +24,14 @@ export const WebcamCapture = () => {
         [webcamRef]
     );
 
-    const submitHandler = () => {
-        eatitDB.setAppPropVal("image", image);
+    const submitHandler = async () => {
+        // eatitDB.setAppPropVal("image", image);
+        const { ingredients } = await getIngredientsFromImage(image);
+        console.log(ingredients);
+        await eatitDB.setAppPropVal("tags", ingredients ?? []);
+        setTimeout(() => {
+            window.location.assign("/ingredients");
+        },1000);
     }
 
     const retake = () => {

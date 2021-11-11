@@ -1,10 +1,9 @@
-import logo from './assets/eatit.png';
-import { Routes, Route, Link } from "react-router-dom";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Ingredients } from './components/Ingredients/Ingredients';
-import "./DB/controller";
 import { WebcamCapture } from './components/camera';
-import RecipesList from './recipesList/recipesList';
+import {RecipesList} from './components/recipesList/recipesList';
+import logo from './assets/eatit.png';
+import "./DB/controller";
 import './App.less';
 
 function App() {
