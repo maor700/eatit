@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 
-const SERVER_URL = `http://localhost:8080`;
+const SERVER_URL = `https://eatit-331711.el.r.appspot.com`;
 
 export const getIngredientsFromImage = async (image: string) => {
 

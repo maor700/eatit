@@ -37,7 +37,6 @@ export const Ingredients: FC<any> = (props) => {
         <div className="ing-con">
             <h2>Ingridents</h2>
             <InputField editModeOnly onRemove={removeHandler} onSelectOption={onSelection} previewMode isSearchInput getOptions={getOptions}>
-                <Fab onClick={() => { addIngredientsToDb([addVal]) }} className="btn"><AddIcon/></Fab>
             </InputField>
             {ingredients?.map(({ name, image }) => {
                 return <InputField onRemove={removeHandler} key={name} onSelectOption={onSelection} selected={{ value: name, image, label: name }} previewMode isSearchInput getOptions={getOptions} />
