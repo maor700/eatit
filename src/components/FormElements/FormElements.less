@@ -1,0 +1,107 @@
+.field-group {
+    margin: 0.2em 0;
+
+    .field {
+        // background: #c0c0c0;
+        border: none;
+        color: inherit;
+        height: 1.7em;
+        line-height: 1.7em;
+        outline: none;
+        border-radius: 0.2em;
+        padding: 0 0.3em;
+        border: 1px solid transparent;
+        box-shadow: 0 0 0px -2px transparent;
+        color: rgb(39, 39, 39);
+        transition: all 0.2s ease-in-out;
+        font-family: inherit;
+        font-size: unset;
+        flex-wrap: wrap;
+        width: 100%;
+        padding: 0.25em;
+
+        &:focus,
+        &:hover {
+            border: 1px solid #03c8c8;
+        }
+
+        &:focus {
+            box-shadow: 0 0 7px -2px #03c8c8;
+            // background: #b3bdbd;
+        }
+
+        &::-webkit-calendar-picker-indicator {
+            filter: invert(0.5);
+        }
+    }
+
+    .preview-con {
+        padding: 0.5em;
+        display: flex;
+        align-items: center;
+        position: relative;
+        justify-content: space-between;
+        background: rgb(228, 228, 228);
+    }
+
+    .input-con {
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        .act-con {
+            position: absolute;
+            right: 0.5em;
+        }
+    }
+}
+
+.btn {
+    cursor: pointer;
+
+    &.wide {
+        width: 100%;
+        padding: 0.5em;
+        // margin: 0.5em;
+    }
+
+}
+
+.searchOptions {
+    position: absolute;
+    width: calc(100% - 0.1em);
+    text-align: left;
+    top: 2.4em;
+    z-index: 1;
+    background: white;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+    .opt:hover {
+        background: #eee;
+    }
+
+    .opt {
+        padding: 0.2em;
+        border-bottom: 1px solid #eee;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+
+}
+
+.prev {
+    display: flex;
+    align-items: center;
+}
+
+img.opt-img {
+    mix-blend-mode: multiply;
+    width: 3em;
+    margin: 0.2em;
+    margin-right: 1em;
+}

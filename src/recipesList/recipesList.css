@@ -1,0 +1,70 @@
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+.recipes-list-container{
+    display: flex;
+    justify-content:space-around;
+}
+
+.recipes-title{
+    font-weight: bold;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 55px;
+    color: #ef4985;
+    text-align: center;
+    width: 100%;
+}
+.card-recipe {
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px;
+    align-items: center;
+    width: 80%;
+    height: 200px;
+    margin: 30px;
+    max-width: 500px;
+    min-width: 100px;
+    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+}
+
+.recipe-data{
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.icons-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 25px;
+    justify-content: space-around;
+}
+
+.icon { 
+ margin-left: 5px;
+ font-family: 'Bebas Neue', cursive;
+}
+
+.credits{
+    font-size: 13px;
+    color: darkgrey;
+    font-weight: Regular 400;
+    font-family: 'Architects Daughter', cursive;
+        margin-top: 10px;
+}
+
+.title {
+    font-weight: bold;
+    font-family: 'Signika', sans-serif;
+    font-size: 16px;
+}
+
+.recipe-img {
+    display: flex;
+    width: 30%;
+    height: 80%;
+    margin-left: 20px;
+    border-radius: 20px;
+    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+}
