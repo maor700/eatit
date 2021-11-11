@@ -1,6 +1,7 @@
 import { liveQuery } from "dexie";
 import { searchIngredients, getRecipeFromIngredients } from "../services/recipes-api-service";
 import { eatitDB } from "./DB";
+import { getIngredientsFromImage } from "../services/vision-api-service";
 
 export const addIngredientsToDb = async (tags: string[]) => {
     const ingredients = await tagsToIngredients(tags);
@@ -8,15 +9,22 @@ export const addIngredientsToDb = async (tags: string[]) => {
 }
 
 const tagsToIngredients = async (tags: string[]) => {
-    const setteledRes = await Promise.allSettled(tags.map(async (tag) => (await (await searchIngredients(tag)).data)));
-    const ingredients = setteledRes.filter(({ status }) => status === "fulfilled").map(({ value }: any) => value?.[0]);
+    const setteledRes = await Promise.allSettled(tags.filter(_ => _).map(async (tag) => (await (await searchIngredients(tag)).data)));
+    const ingredients = setteledRes.filter(({ status, value }: any) => status === "fulfilled" && value?.[0]).map(({ value }: any) => value?.[0]);
     return ingredients;
 };
 
 liveQuery(() => eatitDB.getAppPropVal("tags"))
-    .subscribe(async(tags) => {
+    .subscribe(async (tags: any) => {
         eatitDB.ingredients.clear();
         await addIngredientsToDb(tags);
+    });
+
+liveQuery(() => eatitDB.getAppPropVal("image"))
+    .subscribe(async (image: string) => {
+        getIngredientsFromImage(image).then(({ ingredients }: any) => {
+            eatitDB.setAppPropVal("tags", [ingredients ?? []])
+        });
     });
 
     liveQuery(() => eatitDB.getAppPropVal("ingridiants"))
