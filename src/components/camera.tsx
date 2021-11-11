@@ -4,6 +4,7 @@ import Fab from '@mui/material/Fab';
 import CameraIcon from '@mui/icons-material/Camera';
 import ReplayIcon from '@mui/icons-material/Replay';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { eatitDB } from '../DB/DB';
 
 export const WebcamCapture = () => {
     const webcamRef = React.useRef<any>(null);
@@ -15,12 +16,16 @@ export const WebcamCapture = () => {
 
     const capture = React.useCallback(
         () => {
-            const imageSrc = webcamRef.current?.getScreenshot?.();
+            const imageSrc = webcamRef.current?.getScreenshot?.();            
             setImage(imageSrc);
         },
 
         [webcamRef]
     );
+
+    const submitHandler = ()=>{
+        eatitDB.setAppPropVal("image", image);
+    }
 
     const retake = () => {
         setImage('');  
@@ -45,7 +50,7 @@ export const WebcamCapture = () => {
             <Fab className="cam-button"
                     onClick={retake}>
                     <ReplayIcon/></Fab>
-            <Fab className="cam-button">
+            <Fab className="cam-button" onClick={submitHandler}>
                     <NavigateNextIcon/></Fab>
             </>}
         </div>
