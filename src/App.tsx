@@ -4,8 +4,9 @@ import * as ReactDOM from "react-dom";
 import { Routes, Route, Link } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import './App.less'
-import { Ingredients } from './Ingredients/Ingredients';
+import { Ingredients } from './components/Ingredients/Ingredients';
 import "./DB/controller";
+import { WebcamCapture } from './components/camera';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
             <img src={logo} className="App-logo" alt="logo" />
           </div>
           <Routes>
-            <Route path="/" element={<h1>Home</h1>} />
+            <Route path="/" element={<WebcamCapture/>} />
             <Route path="/ingredients" element={<Ingredients />} />
             <Route path="/recipes" element={<h2>recipes</h2>} />
             <Route path="/recipe-details" element={<h1>Recipe Details</h1>} />

@@ -1,7 +1,7 @@
 import { FC, InputHTMLAttributes, useEffect, useState } from "react";
 import { MdClose, MdModeEdit, MdSave } from "react-icons/md";
-import { useToggle } from "../hooks/useToggle";
-import { getUrlImage } from "../services/recipes-api-service";
+import { useToggle } from "../../hooks/useToggle";
+import { getUrlImage } from "../../services/recipes-api-service";
 import "./FormElements.less";
 
 export type Option = { value: any, label: string, image?: string };

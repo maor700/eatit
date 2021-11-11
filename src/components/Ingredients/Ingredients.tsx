@@ -1,9 +1,9 @@
 import { useLiveQuery } from "dexie-react-hooks";
 import { FC, useCallback, useState } from "react";
-import { addIngredientsToDb } from "../DB/controller";
-import { eatitDB } from "../DB/DB";
+import { addIngredientsToDb } from "../../DB/controller";
+import { eatitDB } from "../../DB/DB";
 import { InputField, Option } from "../FormElements/InputField";
-import { searchIngredients } from "../services/recipes-api-service";
+import { searchIngredients } from "../../services/recipes-api-service";
 import "./Ingredients.less";
 
 export const Ingredients: FC<any> = (props) => {

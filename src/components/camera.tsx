@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Webcam from "react-webcam";
 import Fab from '@mui/material/Fab';
-import "./camera.css";
 import CameraIcon from '@mui/icons-material/Camera';
 import ReplayIcon from '@mui/icons-material/Replay';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import axios from 'axios';
 
 export const WebcamCapture = () => {
     const webcamRef = React.useRef<any>(null);
@@ -47,8 +45,7 @@ export const WebcamCapture = () => {
             <Fab className="cam-button"
                     onClick={retake}>
                     <ReplayIcon/></Fab>
-            <Fab className="cam-button"
-                    onClick={submit}>
+            <Fab className="cam-button">
                     <NavigateNextIcon/></Fab>
             </>}
         </div>
