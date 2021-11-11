@@ -4,7 +4,8 @@ import Fab from '@mui/material/Fab';
 import CameraIcon from '@mui/icons-material/Camera';
 import ReplayIcon from '@mui/icons-material/Replay';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { eatitDB } from '../DB/DB';
+import { eatitDB } from '../../DB/DB';
+import './camera.css'
 
 export const WebcamCapture = () => {
     const webcamRef = React.useRef<any>(null);
@@ -47,7 +48,7 @@ export const WebcamCapture = () => {
                     </Fab>
             </div> : <>
             <img className="image-result" src={image} />
-            <Fab className="cam-button"
+            <Fab className="cam-button" 
                     onClick={retake}>
                     <ReplayIcon/></Fab>
             <Fab className="cam-button" onClick={submitHandler}>
