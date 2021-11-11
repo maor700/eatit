@@ -1,28 +1,29 @@
-import { useState } from 'react'
-import logo from '../assets/eatit.png';
-import * as ReactDOM from "react-dom";
-import { Routes, Route, Link } from "react-router-dom";
-import { BrowserRouter } from "react-router-dom";
-import './recipesList.css'
+import { useLiveQuery } from 'dexie-react-hooks';
 import { FcClock, FcLike } from 'react-icons/fc';
+import { eatitDB } from '../../DB/DB';
+import { getRecipeDetailsUrl } from '../../services/recipes-api-service';
+import './recipesList.css';
 
 type RecipesListProps = {
     recipes: any
 }
 
-export const RecipesList: React.FC<RecipesListProps> = function ({ recipes }: RecipesListProps) {
-    const [count, setCount] = useState(0)
-
+export const RecipesList: React.FC<RecipesListProps> = function () {
+    const recipes = useLiveQuery(() => { return eatitDB.recipes.toArray() }, [], []);
     return (
         <>
             <div className="recipes-title">We found some recipes for you !</div>
-            {recipes.map((recipe: any) => <div key={recipe?.id} className="recipes-list-container">
+            {recipes.map((recipe: any) => <div className="recipes-list-container">
                 <div className="card-recipe">
                     <div className="recipe-img" style={{ background: `url(${recipe.image})` } as any}></div>
                     <div className="recipe-data">
-                        <a href={recipe.sourceUrl}>
+                        <div onClick={()=>{
+                            fetch(getRecipeDetailsUrl(recipe.id)).then(res=>res.json()).then(({sourceUrl}:any)=>{
+                                location.assign(sourceUrl);
+                            })
+                        }}>
                             <div className="title">{recipe.title}</div>
-                        </a>
+                        </div>
                         <div className="credits">
                             By: {recipe.creditsText}
                         </div>

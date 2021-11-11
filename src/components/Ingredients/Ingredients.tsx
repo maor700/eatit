@@ -30,19 +30,25 @@ export const Ingredients: FC<any> = (props) => {
         eatitDB.ingredients.delete(option.value);
     }
 
-    const searchHandler = () => {
-    }
-
     return (
         <div className="ing-con">
             <h2>Ingridents</h2>
             <InputField editModeOnly onRemove={removeHandler} onSelectOption={onSelection} previewMode isSearchInput getOptions={getOptions}>
-                <Fab onClick={() => { addIngredientsToDb([addVal]) }} className="btn"><AddIcon/></Fab>
+                <Fab onClick={() => { addIngredientsToDb([addVal]) }} className="btn"><AddIcon /></Fab>
             </InputField>
             {ingredients?.map(({ name, image }) => {
                 return <InputField onRemove={removeHandler} key={name} onSelectOption={onSelection} selected={{ value: name, image, label: name }} previewMode isSearchInput getOptions={getOptions} />
             })}
-            <Fab variant="extended" size="medium" className="btn wide">find recipe <SearchIcon/></Fab >
+            <Fab onClick={async () => {
+                const recipes = await getRecipeFromIngredients(ingredients.map(_ => _.name), "");
+                await eatitDB.transaction("rw", eatitDB.recipes, async () => {
+                    eatitDB.recipes.clear();
+                    eatitDB.recipes.bulkPut(recipes);
+                });
+                setTimeout(()=>{
+                    window.location.assign("/recipes");
+                },1000);
+            }} variant="extended" size="medium" className="btn wide">find recipe <SearchIcon /></Fab >
         </div>
     );
 }

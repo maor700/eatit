@@ -16,13 +16,6 @@ const tagsToIngredients = async (tags: string[]) => {
 
 liveQuery(() => eatitDB.getAppPropVal("tags"))
     .subscribe(async (tags: any) => {
-        eatitDB.ingredients.clear();
+        await eatitDB.ingredients.clear();
         await addIngredientsToDb(tags);
-    });
-
-liveQuery(() => eatitDB.getAppPropVal("image"))
-    .subscribe(async (image: string) => {
-        getIngredientsFromImage(image).then(({ ingredients }: any) => {
-            eatitDB.setAppPropVal("tags", [ingredients ?? []])
-        });
     });
