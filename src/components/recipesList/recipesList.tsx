@@ -1,4 +1,5 @@
 import { useLiveQuery } from 'dexie-react-hooks';
+import { useEffect, useState } from 'react';
 import { FcClock, FcLike } from 'react-icons/fc';
 import { eatitDB } from '../../DB/DB';
 import { getRecipeDetailsUrl } from '../../services/recipes-api-service';
@@ -10,6 +11,17 @@ type RecipesListProps = {
 
 export const RecipesList: React.FC<RecipesListProps> = function () {
     const recipes = useLiveQuery(() => { return eatitDB.recipes.toArray() }, [], []);
+    const finalRecepise = useState([]);
+    useEffect(() => {
+        const arr = [];
+        Promise.allSettled(recipes?.map(async (r) => {
+            return await fetch(getRecipeDetailsUrl(r.id + "")).then(res => res.json());
+        })).then((allInfo) => {
+            const allData = allInfo.filter(_ => _.status === "fulfilled").map((_: any) => _?.value);
+            console.log(allInfo);
+            eatitDB.recipes.bulkPut(allData);
+        })
+    }, [])
     return (
         <>
             <div className="recipes-title">We found some recipes for you !</div>
@@ -17,13 +29,9 @@ export const RecipesList: React.FC<RecipesListProps> = function () {
                 <div className="card-recipe">
                     <div className="recipe-img" style={{ background: `url(${recipe.image})` } as any}></div>
                     <div className="recipe-data">
-                        <div onClick={()=>{
-                            fetch(getRecipeDetailsUrl(recipe.id)).then(res=>res.json()).then(({sourceUrl}:any)=>{
-                                location.assign(sourceUrl);
-                            })
-                        }}>
+                        <a href={recipe?.sourceUrl}>
                             <div className="title">{recipe.title}</div>
-                        </div>
+                        </a>
                         <div className="credits">
                             By: {recipe.creditsText}
                         </div>

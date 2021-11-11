@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 
-const API_KEY = `f7a44e5b67714eb88b3afabbcfe920e0`;
+const API_KEY = `f5dc0629403f43f2b06b731ab057da04`;
 const KEY_PARAM = `?apiKey=${API_KEY}`;
 const SPOONACULAR_URL = `https://api.spoonacular.com/`;
 
